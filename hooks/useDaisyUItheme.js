@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-const useDaisyUItheme = (defaultTheme) => {
+const useDaisyUItheme = defaultTheme => {
   if (!defaultTheme) {
     defaultTheme = 'light'
   }
