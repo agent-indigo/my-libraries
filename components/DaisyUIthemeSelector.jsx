@@ -1,6 +1,6 @@
 import useDaisyUItheme from '../hooks/useDaisyUItheme'
-const DaisyUIthemeSelector = ({ defaultTheme }) => {
-  const { theme, handleThemeChange } = useDaisyUItheme(defaultTheme.toLowerCase())
+const DaisyUIthemeSelector = ({defaultTheme}) => {
+  const {theme, handleThemeChange} = useDaisyUItheme(defaultTheme.toLowerCase())
   return (
     <div>
       <label htmlFor="daisyUI-theme-selector" className="text-lg m-2" id="daisyUI-theme-selector">

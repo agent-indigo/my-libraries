@@ -1,6 +1,6 @@
 import useBootswatch from '../hooks/useBootswatch'
-const BootswatchSelector = ({ defaultThemeName }) => {
-  const { themes, selectedTheme, handleThemeChange } = useBootswatch(defaultThemeName)
+const BootswatchSelector = ({defaultThemeName}) => {
+  const {themes, selectedTheme, handleThemeChange} = useBootswatch(defaultThemeName)
   return (
     <div className="form-group">
       <label htmlFor="bootswatch-selector">Theme:</label>

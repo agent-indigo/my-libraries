@@ -1,8 +1,5 @@
-import { useEffect, useState } from 'react'
-const useDaisyUItheme = defaultTheme => {
-  if (!defaultTheme) {
-    defaultTheme = 'light'
-  }
+import {useEffect, useState} from 'react'
+const useDaisyUItheme = (defaultTheme = 'light') => {
   const [theme, setTheme] = useState(defaultTheme)
   const handleThemeChange = event => {
     setTheme(event.target.value)
@@ -13,6 +10,6 @@ const useDaisyUItheme = defaultTheme => {
       document.documentElement.removeAttribute('data-theme')
     }
   }, [theme])
-  return { theme, handleThemeChange }
+  return {theme, handleThemeChange}
 }
 export default useDaisyUItheme

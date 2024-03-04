@@ -1,6 +1,6 @@
-import { renderHook, act, waitFor } from '@testing-library/react'
+import {renderHook, act, waitFor} from '@testing-library/react'
 import useBootswatch from '../hooks/useBootswatch'
-import EasyHTTP from '../utilities/EasyHTTP'
+import axios from 'axios'
 jest.mock('../utilities/EasyHTTP')
 describe('useBootswatch', () => {
   let createElementSpy
@@ -15,17 +15,15 @@ describe('useBootswatch', () => {
   })
   it('should fetch themes and apply the default theme', async () => {
     const mockThemes = [
-      { name: 'Default', cssCdn: 'https://bootswatch.com/5/default/bootstrap.min.css' },
-      { name: 'Cerulean', cssCdn: 'https://bootswatch.com/5/cerulean/bootstrap.min.css' }
+      {name: 'Simplex', cssCdn: 'https://bootswatch.com/5/simplex/bootstrap.min.css'},
+      {name: 'Cerulean', cssCdn: 'https://bootswatch.com/5/cerulean/bootstrap.min.css'}
     ]
-    EasyHTTP.get.mockResolvedValueOnce({ themes: mockThemes })
-    const { result } = renderHook(() => useBootswatch('Default'))
+    axios.get.mockResolvedValueOnce({themes: mockThemes})
+    const {result} = renderHook(() => useBootswatch('Simplex'))
     expect(result.current.themes).toEqual([])
-    expect(result.current.selectedTheme).toEqual('Default')
+    expect(result.current.selectedTheme).toEqual('Simplex')
     // eslint-disable-next-line testing-library/no-unnecessary-act
-    await act(async () => {
-      await waitFor(() => result.current.themes.length > 0)
-    })
+    await act(async () => await waitFor(() => result.current.themes.length > 0))
     expect(result.current.themes).toEqual(mockThemes)
     expect(createElementSpy).toHaveBeenCalledWith('link')
     expect(appendChildSpy).toHaveBeenCalled()
