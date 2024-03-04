@@ -25,11 +25,11 @@ const EasyHTTP = (() => {
             return console.error(`Error encountered while posting:\n${error}`)
         }
     }
-    // Make an HTTP PATCH Request
-    const patch = async (url, data) => {
+    // Make an HTTP PUT Request
+    const put = async (url, data) => {
         try {
             const response = await fetch(url, {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: {
                     'Content-type': 'application/json'
                 },
@@ -58,7 +58,7 @@ const EasyHTTP = (() => {
     return {
         get,
         post,
-        patch,
+        put,
         del
     }
 })()
